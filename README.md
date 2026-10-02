@@ -1,18 +1,22 @@
 <div align="center">
 
-# Tetris — WPF Desktop Game
+# Tetris
 
 <p>
-  A classic Tetris implementation built with C#, .NET 6, and Windows Presentation Foundation (WPF).
+  A desktop Tetris game built with <strong>C#</strong>, <strong>.NET 6</strong>, and <strong>WPF</strong>.
+</p>
+
+<p>
+  <img src="https://img.shields.io/badge/C%23-.NET%206-512BD4?style=for-the-badge&logo=csharp&logoColor=white" alt="C# .NET 6">
+  <img src="https://img.shields.io/badge/WPF-Desktop%20Application-68217A?style=for-the-badge" alt="WPF">
+  <img src="https://img.shields.io/badge/XAML-UI-0C54C2?style=for-the-badge" alt="XAML">
+  <img src="https://img.shields.io/badge/OOP-Architecture-2E7D32?style=for-the-badge" alt="OOP">
 </p>
 
 <p>
   <a href="https://github.com/MOHAMMAD-KIMIA/Tetris-Project">
-    <img src="https://img.shields.io/badge/Repository-GitHub-181717?style=for-the-badge&logo=github" alt="GitHub Repository">
+    View Repository
   </a>
-  <img src="https://img.shields.io/badge/C%23-.NET%206-512BD4?style=for-the-badge&logo=.net" alt="C# .NET 6">
-  <img src="https://img.shields.io/badge/WPF-Desktop%20Application-68217A?style=for-the-badge" alt="WPF">
-  <img src="https://img.shields.io/badge/Architecture-OOP-2E7D32?style=for-the-badge" alt="Object Oriented Programming">
 </p>
 
 </div>
@@ -29,157 +33,63 @@
 
 <p>
   The project focuses on implementing the core mechanics of Tetris while applying
-  fundamental software engineering and object-oriented programming concepts.
-  The game includes piece generation, movement, rotation, collision detection,
-  line clearing, scoring, increasing difficulty, hold functionality, next-piece
-  preview, and ghost-piece rendering.
+  fundamental object-oriented programming and software engineering concepts.
+  It includes Tetromino generation, movement, rotation, collision detection,
+  line clearing, scoring, increasing fall speed, hold functionality,
+  next-piece preview, and ghost-piece rendering.
 </p>
 
 <p>
-  The project was designed not only as a playable game, but also as an exercise
-  in designing reusable game components, managing application state, implementing
-  algorithms, and separating game logic from the presentation layer.
+  The main goal of the project was to build a complete interactive desktop
+  application while practicing game-state management, grid-based algorithms,
+  reusable class design, inheritance, polymorphism, and asynchronous programming.
 </p>
 
 <hr>
 
-<h2>Key Features</h2>
+<h2>Features</h2>
 
 <table>
   <tr>
-    <td width="50%">
+    <td width="50%" valign="top">
 
-### Gameplay
+<h3>Core Gameplay</h3>
 
-* Seven standard Tetromino pieces
-* Piece movement
-* Clockwise rotation
-* Counter-clockwise rotation
-* Soft drop
-* Hard drop
-* Collision detection
-* Line clearing
-* Game-over detection
+<ul>
+  <li>Seven standard Tetromino pieces</li>
+  <li>Horizontal piece movement</li>
+  <li>Clockwise rotation</li>
+  <li>Counter-clockwise rotation</li>
+  <li>Soft drop</li>
+  <li>Hard drop</li>
+  <li>Collision detection</li>
+  <li>Line clearing</li>
+  <li>Game-over detection</li>
+</ul>
 
-    </td>
-    <td width="50%">
+```
+</td>
+<td width="50%" valign="top">
+```
 
-### Advanced Mechanics
+<h3>Additional Mechanics</h3>
 
-* Hold piece system
-* Next piece preview
-* Ghost piece
-* Increasing fall speed
-* Dynamic game loop
-* Score tracking
-* Multiple rotation states
-* Random piece generation
+<ul>
+  <li>Next piece preview</li>
+  <li>Hold piece functionality</li>
+  <li>Ghost piece</li>
+  <li>Dynamic falling speed</li>
+  <li>Score tracking</li>
+  <li>Predefined rotation states</li>
+  <li>Random piece generation</li>
+  <li>Asynchronous game loop</li>
+</ul>
 
-    </td>
+```
+</td>
+```
+
   </tr>
-
-</table>
-
-<hr>
-
-<h2>Game Board</h2>
-
-<p>
-  The game uses a <strong>22 × 10</strong> grid as its main playfield.
-  Each cell represents one position that can either be empty or occupied by
-  part of a Tetromino.
-</p>
-
-<pre>
-+--------------------+
-|                    |
-|                    |
-|                    |
-|                    |
-|                    |
-|                    |
-|                    |
-|                    |
-|                    |
-|                    |
-|                    |
-|                    |
-|                    |
-|                    |
-|                    |
-|                    |
-|                    |
-|                    |
-|                    |
-|                    |
-|                    |
-|                    |
-+--------------------+
-       10 Columns
-       22 Rows
-</pre>
-
-<p>
-  The grid is represented internally using a two-dimensional array, allowing
-  the game to efficiently check occupied cells, detect collisions, and clear
-  completed rows.
-</p>
-
-<hr>
-
-<h2>Tetrominoes</h2>
-
-<p>
-  The game implements all seven standard Tetris pieces.
-  Each piece inherits from the common <code>Block</code> abstraction and defines
-  its own rotation states.
-</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Piece</th>
-      <th>Class</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>I</td>
-      <td><code>IBlock</code></td>
-      <td>Long four-cell straight piece</td>
-    </tr>
-    <tr>
-      <td>J</td>
-      <td><code>JBlock</code></td>
-      <td>Three-cell horizontal piece with one additional cell</td>
-    </tr>
-    <tr>
-      <td>L</td>
-      <td><code>LBlock</code></td>
-      <td>Three-cell horizontal piece with one additional cell</td>
-    </tr>
-    <tr>
-      <td>O</td>
-      <td><code>OBlock</code></td>
-      <td>Two-by-two square piece</td>
-    </tr>
-    <tr>
-      <td>S</td>
-      <td><code>SBlock</code></td>
-      <td>Zig-zag shaped piece</td>
-    </tr>
-    <tr>
-      <td>T</td>
-      <td><code>TBlock</code></td>
-      <td>T-shaped piece</td>
-    </tr>
-    <tr>
-      <td>Z</td>
-      <td><code>ZBlock</code></td>
-      <td>Reverse zig-zag shaped piece</td>
-    </tr>
-  </tbody>
 </table>
 
 <hr>
@@ -189,18 +99,18 @@
 <table>
   <thead>
     <tr>
-      <th>Input</th>
+      <th>Key</th>
       <th>Action</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td><kbd>←</kbd></td>
-      <td>Move piece left</td>
+      <td>Move left</td>
     </tr>
     <tr>
       <td><kbd>→</kbd></td>
-      <td>Move piece right</td>
+      <td>Move right</td>
     </tr>
     <tr>
       <td><kbd>↓</kbd></td>
@@ -227,11 +137,93 @@
 
 <hr>
 
-<h2>Game Architecture</h2>
+<h2>Tetromino System</h2>
 
 <p>
-  The application is structured around independent classes responsible for
-  different parts of the game system.
+  The project implements all seven standard Tetromino types.
+  Each piece is represented by its own class derived from the common
+  <code>Block</code> abstraction.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Piece</th>
+      <th>Implementation</th>
+      <th>Rotation States</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>I</td>
+      <td><code>IBlock</code></td>
+      <td>Defined by the block implementation</td>
+    </tr>
+    <tr>
+      <td>J</td>
+      <td><code>JBlock</code></td>
+      <td>Defined by the block implementation</td>
+    </tr>
+    <tr>
+      <td>L</td>
+      <td><code>LBlock</code></td>
+      <td>Defined by the block implementation</td>
+    </tr>
+    <tr>
+      <td>O</td>
+      <td><code>OBlock</code></td>
+      <td>Defined by the block implementation</td>
+    </tr>
+    <tr>
+      <td>S</td>
+      <td><code>SBlock</code></td>
+      <td>Defined by the block implementation</td>
+    </tr>
+    <tr>
+      <td>T</td>
+      <td><code>TBlock</code></td>
+      <td>Defined by the block implementation</td>
+    </tr>
+    <tr>
+      <td>Z</td>
+      <td><code>ZBlock</code></td>
+      <td>Defined by the block implementation</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+  The common <code>Block</code> abstraction allows the game state to interact
+  with different Tetromino implementations through a consistent interface.
+</p>
+
+<hr>
+
+<h2>Game Board</h2>
+
+<p>
+  The main game board is represented by a <strong>22 × 10</strong> grid.
+  The grid is managed internally using a two-dimensional structure that
+  stores the current state of every cell.
+</p>
+
+<pre>
+Rows:    22
+Columns: 10
+</pre>
+
+<p>
+  The grid is responsible for storing placed blocks and is used during
+  movement validation, collision detection, line clearing, and rendering.
+</p>
+
+<hr>
+
+<h2>Architecture</h2>
+
+<p>
+  The project is organized around several classes with clearly defined
+  responsibilities.
 </p>
 
 <pre>
@@ -242,147 +234,158 @@
                                  |
                                  v
                          +----------------+
-                         |    GameState   |
+                         |   GameState    |
                          +-------+--------+
                                  |
-          +----------------------+----------------------+
-          |                      |                      |
-          v                      v                      v
-   +-------------+        +-------------+        +-------------+
-   |  GameGrid   |        | BlockQueue  |        | Current     |
-   |             |        |             |        | Block       |
-   +-------------+        +-------------+        +-------------+
-                                 |
-                                 v
-                         +----------------+
-                         |    Block       |
-                         +-------+--------+
-                                 |
-          +------+------+------+------+------+------+------+
-          |      |      |      |      |      |      |
-          v      v      v      v      v      v      v
-          I      J      L      O      S      T      Z
+               +-----------------+-----------------+
+               |                 |                 |
+               v                 v                 v
+        +-------------+   +-------------+   +-------------+
+        |  GameGrid   |   | BlockQueue  |   | Current     |
+        |             |   |             |   | Block       |
+        +-------------+   +-------------+   +-------------+
+                                                   |
+                                                   v
+                                            +-------------+
+                                            |    Block    |
+                                            +------+------+
+                                                   |
+                  +--------+--------+--------+-----+-----+--------+--------+
+                  |        |        |        |           |        |        |
+                  v        v        v        v           v        v        v
+                  I        J        L        O           S        T        Z
 </pre>
 
 <hr>
 
 <h2>Core Components</h2>
 
-<h3>GameState</h3>
+<h3><code>GameState</code></h3>
 
 <p>
-  <code>GameState</code> acts as the central controller for the gameplay state.
-  It coordinates the active piece, grid, score, held piece, next piece,
-  movement, rotation, and game progression.
+  The <code>GameState</code> class represents the central state of the game.
+  It coordinates the current piece, game grid, score, held piece, piece queue,
+  movement, rotation, and progression of the game.
 </p>
 
-<h3>GameGrid</h3>
+<h3><code>GameGrid</code></h3>
 
 <p>
-  <code>GameGrid</code> represents the board and provides the underlying
-  structure used for collision detection, block placement, row clearing,
-  and board state management.
+  Responsible for representing the board and managing the cells occupied by
+  previously placed Tetrominoes.
 </p>
 
-<h3>Block</h3>
+<h3><code>Block</code></h3>
 
 <p>
-  <code>Block</code> provides the common abstraction for Tetromino pieces.
-  Individual pieces extend this abstraction and provide their own rotation
-  configurations.
+  Provides the common abstraction for Tetromino pieces.
+  Concrete block classes inherit from this abstraction and define their
+  specific shapes and rotation states.
 </p>
 
-<h3>BlockQueue</h3>
+<h3><code>BlockQueue</code> / <code>GameQueue</code></h3>
 
 <p>
-  The block queue manages upcoming Tetromino pieces and provides the next
-  piece used by the game.
+  Responsible for generating and providing upcoming Tetrominoes.
+  The implementation uses randomized piece selection while avoiding
+  immediately repeating the same block identifier.
 </p>
 
-<h3>Position</h3>
+<h3><code>Position</code></h3>
 
 <p>
-  The <code>Position</code> structure is used to represent coordinates within
-  the game grid and determine where each block cell should be rendered.
+  Represents coordinates used to position individual block cells inside
+  the game grid.
+</p>
+
+<h3><code>MainWindow</code></h3>
+
+<p>
+  Provides the WPF user interface and connects user input and rendering
+  with the underlying game state.
 </p>
 
 <hr>
 
 <h2>Game Mechanics</h2>
 
-<h3>Piece Movement</h3>
+<h3>Movement</h3>
 
 <p>
-  The active Tetromino can move horizontally across the board.
-  Every movement is validated against the current grid before the position
-  is updated.
+  The active Tetromino can move horizontally and vertically.
+  Before applying a movement, the target position is validated against
+  the board boundaries and occupied cells.
 </p>
 
 <h3>Collision Detection</h3>
 
 <p>
-  Before a piece is moved or rotated, its target cells are checked against
-  the boundaries of the board and existing occupied cells.
+  Collision detection prevents the active Tetromino from moving outside
+  the playable area or overlapping blocks that have already been placed.
 </p>
 
 <p>
-  This prevents pieces from moving outside the playable area or overlapping
-  with blocks that have already been placed.
+  This validation is performed whenever the game attempts to move or rotate
+  the active block.
 </p>
 
 <h3>Rotation</h3>
 
 <p>
-  Each Tetromino contains predefined rotation states.
-  The game changes the active rotation state when the player rotates a piece
-  and validates the resulting position before applying the rotation.
+  Each Tetromino contains predefined rotation configurations.
+  The game changes the current rotation state and validates the resulting
+  positions before applying the rotation.
 </p>
 
 <h3>Hard Drop</h3>
 
 <p>
-  The hard-drop mechanic calculates the maximum valid downward distance and
-  immediately places the current piece at that position.
+  The hard-drop functionality calculates the maximum valid downward distance
+  using the current board state and immediately places the active Tetromino
+  at its landing position.
 </p>
 
 <h3>Soft Drop</h3>
 
 <p>
-  Soft drop allows the player to accelerate the downward movement of the
-  current Tetromino.
+  Soft drop allows the player to manually accelerate the downward movement
+  of the active Tetromino.
 </p>
 
 <h3>Line Clearing</h3>
 
 <p>
-  After a Tetromino is placed, the grid is scanned for completed rows.
-  Full rows are removed and the remaining blocks are shifted downward.
+  After a block is placed, the game checks the board for completed rows.
+  Full rows are removed and the remaining rows are shifted accordingly.
 </p>
 
 <h3>Ghost Piece</h3>
 
 <p>
-  The ghost piece displays the position where the current Tetromino would
-  land if dropped immediately.
-  The implementation uses the calculated block drop distance to determine
+  The ghost piece provides a visual indication of where the active Tetromino
+  will land if dropped vertically.
+</p>
+
+<p>
+  The implementation uses the block drop-distance calculation to determine
   the ghost position.
 </p>
 
-<h3>Hold System</h3>
+<h3>Hold Mechanism</h3>
 
 <p>
-  The player can store the current Tetromino using the <kbd>C</kbd> key.
-  The implementation uses a hold-state flag to prevent repeatedly holding
-  pieces without first placing the active piece.
+  The player can store the current Tetromino using <kbd>C</kbd>.
+  A hold-state flag prevents the player from repeatedly swapping pieces
+  during the same turn.
 </p>
 
 <hr>
 
-<h2>Scoring System</h2>
+<h2>Scoring</h2>
 
 <p>
-  The current scoring implementation increases the score according to the
-  number of rows cleared during gameplay.
+  The current implementation calculates score based on the number of rows
+  cleared.
 </p>
 
 <pre>
@@ -390,18 +393,17 @@ Score += ClearedRows;
 </pre>
 
 <p>
-  The scoring system is intentionally simple and can be extended in the
-  future to support standard Tetris scoring rules, combo bonuses, T-Spins,
-  back-to-back clears, and level multipliers.
+  The scoring system is intentionally simple and provides a foundation for
+  implementing more advanced scoring rules in the future.
 </p>
 
 <hr>
 
-<h2>Increasing Difficulty</h2>
+<h2>Dynamic Difficulty</h2>
 
 <p>
-  The falling speed of the Tetrominoes increases as the game progresses.
-  The game uses a configurable delay system:
+  The falling speed of the active Tetromino increases as the game progresses.
+  The current implementation uses configurable delay values.
 </p>
 
 <table>
@@ -413,23 +415,22 @@ Score += ClearedRows;
   </thead>
   <tbody>
     <tr>
-      <td>Maximum Delay</td>
+      <td>Maximum Fall Delay</td>
       <td>1000 ms</td>
     </tr>
     <tr>
-      <td>Minimum Delay</td>
+      <td>Minimum Fall Delay</td>
       <td>75 ms</td>
     </tr>
     <tr>
-      <td>Delay Reduction</td>
+      <td>Delay Decrease</td>
       <td>25 ms</td>
     </tr>
   </tbody>
 </table>
 
 <p>
-  This creates a progressively faster gameplay experience as the player
-  continues playing.
+  This mechanism gradually increases the game speed and difficulty.
 </p>
 
 <hr>
@@ -437,104 +438,113 @@ Score += ClearedRows;
 <h2>Game Loop</h2>
 
 <p>
-  The game uses an asynchronous loop to control automatic piece movement.
-  The loop periodically waits according to the current fall delay and then
-  attempts to move the active piece downward.
+  The game uses an asynchronous loop based on timed delays to control
+  automatic downward movement.
 </p>
 
 <pre>
-Start Game
-    |
-    v
-Create / Select Block
-    |
-    v
-Render Block
-    |
-    v
+Initialize Game
+      |
+      v
+Create Game State
+      |
+      v
+Select Active Block
+      |
+      v
+Render Game
+      |
+      v
 Wait for Fall Delay
-    |
-    v
-Try Move Down
-    |
-    +---- Success ----> Continue Loop
-    |
-    +---- Collision
-             |
-             v
-        Lock Block
-             |
-             v
-        Clear Rows
-             |
-             v
-        Update Score
-             |
-             v
-        Spawn Next Block
-             |
-             v
-        Check Game Over
+      |
+      v
+Attempt Downward Movement
+      |
+      +------ Success ------> Continue Loop
+      |
+      +------ Collision
+                    |
+                    v
+               Lock Block
+                    |
+                    v
+               Clear Rows
+                    |
+                    v
+               Update Score
+                    |
+                    v
+               Spawn Next Block
+                    |
+                    v
+              Check Game Over
 </pre>
+
+<p>
+  This design keeps the automatic movement independent from user input
+  while allowing keyboard actions to update the game state.
+</p>
 
 <hr>
 
-<h2>Rendering System</h2>
+<h2>Rendering</h2>
 
 <p>
-  The user interface is implemented using WPF and XAML.
-  The game board is rendered through a WPF <code>Canvas</code> and a collection
-  of image controls representing individual grid cells.
+  The user interface is implemented using <strong>WPF</strong> and
+  <strong>XAML</strong>.
 </p>
 
 <p>
-  Rendering responsibilities include:
+  The game board is rendered using a WPF <code>Canvas</code> and an
+  <code>Image[,]</code> collection representing the visual cells of the board.
 </p>
+
+<p>The rendering system includes:</p>
 
 <ul>
-  <li>Drawing the game grid</li>
-  <li>Drawing the active Tetromino</li>
-  <li>Drawing the ghost piece</li>
-  <li>Displaying the next Tetromino</li>
-  <li>Displaying the held Tetromino</li>
-  <li>Updating the game board after every state change</li>
+  <li>Game grid rendering</li>
+  <li>Active Tetromino rendering</li>
+  <li>Ghost piece rendering</li>
+  <li>Next piece rendering</li>
+  <li>Held piece rendering</li>
+  <li>Game state updates</li>
 </ul>
+
+<p>
+  Rendering is updated as the underlying game state changes.
+</p>
 
 <hr>
 
 <h2>Object-Oriented Design</h2>
 
-<p>
-  The project applies several fundamental object-oriented programming concepts.
-</p>
-
 <table>
   <thead>
     <tr>
       <th>Concept</th>
-      <th>Application</th>
+      <th>Implementation</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>Abstraction</td>
-      <td>The <code>Block</code> class defines common Tetromino behavior.</td>
+      <td><code>Block</code> provides the common Tetromino abstraction.</td>
     </tr>
     <tr>
       <td>Inheritance</td>
-      <td>Individual Tetromino classes inherit from the base block abstraction.</td>
+      <td>Individual Tetromino classes inherit from <code>Block</code>.</td>
     </tr>
     <tr>
       <td>Polymorphism</td>
-      <td>Different Tetromino implementations provide their own configurations.</td>
+      <td>Different block types provide their own shape and rotation behavior.</td>
     </tr>
     <tr>
       <td>Encapsulation</td>
-      <td>Game state and block behavior are maintained within dedicated classes.</td>
+      <td>Game state and block behavior are maintained inside dedicated classes.</td>
     </tr>
     <tr>
       <td>Separation of Concerns</td>
-      <td>Game logic, state management, and UI rendering are handled separately.</td>
+      <td>Game state, grid management, block logic, and UI rendering have separate responsibilities.</td>
     </tr>
   </tbody>
 </table>
@@ -544,14 +554,14 @@ Try Move Down
 <h2>Algorithms and Data Structures</h2>
 
 <ul>
-  <li>Two-dimensional arrays for board representation</li>
+  <li>Two-dimensional grid representation</li>
   <li>Coordinate-based block positioning</li>
   <li>Collision detection</li>
   <li>Grid traversal for completed-row detection</li>
-  <li>Row shifting after line clearing</li>
-  <li>Randomized Tetromino generation</li>
+  <li>Row removal and downward shifting</li>
+  <li>Randomized block generation</li>
   <li>Drop-distance calculation</li>
-  <li>State-based gameplay management</li>
+  <li>State-based game management</li>
 </ul>
 
 <hr>
@@ -571,8 +581,8 @@ Tetris-Project/
 │   ├── TBlock.cs
 │   └── ZBlock.cs
 │
-├── GameGrid.cs
 ├── GameState.cs
+├── GameGrid.cs
 ├── BlockQueue.cs
 ├── Position.cs
 ├── Context.cs
@@ -581,7 +591,6 @@ Tetris-Project/
 │
 ├── MainWindow.xaml
 ├── MainWindow.xaml.cs
-│
 ├── App.xaml
 ├── App.xaml.cs
 │
@@ -596,17 +605,17 @@ Tetris-Project/
   <thead>
     <tr>
       <th>Technology</th>
-      <th>Purpose</th>
+      <th>Role</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>C#</td>
-      <td>Application and game logic</td>
+      <td>Game and application logic</td>
     </tr>
     <tr>
       <td>.NET 6</td>
-      <td>Application runtime and framework</td>
+      <td>Application framework and runtime</td>
     </tr>
     <tr>
       <td>WPF</td>
@@ -614,11 +623,11 @@ Tetris-Project/
     </tr>
     <tr>
       <td>XAML</td>
-      <td>User interface definition</td>
+      <td>UI definition</td>
     </tr>
     <tr>
       <td>Entity Framework Core</td>
-      <td>Database infrastructure</td>
+      <td>Database-related infrastructure</td>
     </tr>
     <tr>
       <td>SQL Server / LocalDB</td>
@@ -642,7 +651,7 @@ Tetris-Project/
 <h3>Prerequisites</h3>
 
 <ul>
-  <li>Windows operating system</li>
+  <li>Windows</li>
   <li>.NET 6 SDK</li>
   <li>Visual Studio 2022 or another compatible .NET IDE</li>
 </ul>
@@ -667,7 +676,7 @@ dotnet run
 </pre>
 
 <p>
-  Alternatively, open the solution in Visual Studio and run the project
+  The project can also be opened directly in Visual Studio and launched
   using the standard WPF debugging configuration.
 </p>
 
@@ -676,17 +685,18 @@ dotnet run
 <h2>Gameplay Flow</h2>
 
 <ol>
-  <li>The game initializes the board and piece queue.</li>
-  <li>A Tetromino is selected as the active piece.</li>
-  <li>The active piece is rendered on the board.</li>
-  <li>The game loop automatically moves the piece downward.</li>
-  <li>The player can move or rotate the piece.</li>
-  <li>The player can use hold, soft drop, or hard drop.</li>
-  <li>When downward movement is no longer possible, the piece is locked.</li>
-  <li>Completed rows are detected and removed.</li>
-  <li>The score is updated.</li>
-  <li>The next Tetromino becomes active.</li>
-  <li>The board is checked for game-over conditions.</li>
+  <li>Initialize the game board and block queue.</li>
+  <li>Create or select the active Tetromino.</li>
+  <li>Render the current game state.</li>
+  <li>Automatically move the active piece downward.</li>
+  <li>Process player input for movement and rotation.</li>
+  <li>Allow hold, soft drop, or hard drop actions.</li>
+  <li>Lock the Tetromino when downward movement is no longer possible.</li>
+  <li>Detect and clear completed rows.</li>
+  <li>Update the score.</li>
+  <li>Spawn the next Tetromino.</li>
+  <li>Check for game-over conditions.</li>
+  <li>Continue the game loop.</li>
 </ol>
 
 <hr>
@@ -694,14 +704,14 @@ dotnet run
 <h2>Database Integration</h2>
 
 <p>
-  The project contains database-related infrastructure using
-  <strong>Entity Framework Core</strong> and SQL Server / LocalDB components.
+  The repository contains database-related infrastructure based on
+  <strong>Entity Framework Core</strong> and SQL Server / LocalDB.
 </p>
 
 <p>
-  This part of the project provides a foundation for persistent game-related
-  data. However, database persistence is not currently the primary focus of
-  the application and can be further refined as a future improvement.
+  Database-related components exist in the project, but persistent score
+  storage should be considered an area for further refinement rather than
+  a fully polished production feature.
 </p>
 
 <hr>
@@ -709,12 +719,13 @@ dotnet run
 <h2>Current Limitations</h2>
 
 <ul>
-  <li>Scoring does not currently implement the complete official Tetris scoring system.</li>
-  <li>The rotation system can be extended with a complete wall-kick implementation.</li>
-  <li>The random piece generator can be improved using the standard seven-bag system.</li>
-  <li>Automated unit and integration tests are limited.</li>
-  <li>Persistent high-score management can be improved.</li>
-  <li>The UI can be further refined with animations and additional visual feedback.</li>
+  <li>The scoring system is currently based on the number of cleared rows.</li>
+  <li>A complete standard wall-kick rotation system can be added.</li>
+  <li>The block generator can be improved with standard seven-bag randomization.</li>
+  <li>Automated unit and integration testing can be expanded.</li>
+  <li>Persistent high-score management can be further developed.</li>
+  <li>The database layer can be cleaned up and integrated more consistently.</li>
+  <li>The user interface can be improved with additional animations and visual feedback.</li>
 </ul>
 
 <hr>
@@ -725,41 +736,41 @@ dotnet run
   <thead>
     <tr>
       <th>Area</th>
-      <th>Planned Improvement</th>
+      <th>Improvement</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>Gameplay</td>
-      <td>Implement complete Tetris scoring and combo mechanics</td>
+      <td>Scoring</td>
+      <td>Implement standard Tetris scoring, combos, and level-based multipliers.</td>
     </tr>
     <tr>
       <td>Rotation</td>
-      <td>Add a full wall-kick system</td>
+      <td>Implement a complete wall-kick system.</td>
     </tr>
     <tr>
       <td>Randomization</td>
-      <td>Implement seven-bag Tetromino randomization</td>
+      <td>Implement seven-bag Tetromino randomization.</td>
     </tr>
     <tr>
       <td>Persistence</td>
-      <td>Implement persistent high scores and player statistics</td>
-    </tr>
-    <tr>
-      <td>Audio</td>
-      <td>Add sound effects and background music</td>
-    </tr>
-    <tr>
-      <td>UI</td>
-      <td>Add animations and improved visual feedback</td>
+      <td>Implement reliable high-score and player-statistics storage.</td>
     </tr>
     <tr>
       <td>Testing</td>
-      <td>Add unit and integration tests</td>
+      <td>Add automated unit and integration tests for core game mechanics.</td>
+    </tr>
+    <tr>
+      <td>UI</td>
+      <td>Add improved animations, transitions, and gameplay feedback.</td>
+    </tr>
+    <tr>
+      <td>Audio</td>
+      <td>Add sound effects and background music.</td>
     </tr>
     <tr>
       <td>Architecture</td>
-      <td>Further separate game logic from presentation concerns</td>
+      <td>Further separate game logic from presentation and infrastructure concerns.</td>
     </tr>
   </tbody>
 </table>
@@ -769,46 +780,94 @@ dotnet run
 <h2>Testing Strategy</h2>
 
 <p>
-  The game can be tested through a combination of manual gameplay testing
-  and automated tests for isolated game components.
+  The core gameplay can be validated through manual gameplay testing,
+  while the game logic can be further covered using automated unit tests.
 </p>
 
 <h3>Important Test Cases</h3>
 
 <ul>
-  <li>Piece movement at the left and right board boundaries</li>
-  <li>Piece collision with existing blocks</li>
-  <li>Piece collision with the bottom of the board</li>
-  <li>Clockwise and counter-clockwise rotation</li>
+  <li>Horizontal movement at board boundaries</li>
+  <li>Collision with existing blocks</li>
+  <li>Collision with the bottom of the board</li>
+  <li>Clockwise rotation</li>
+  <li>Counter-clockwise rotation</li>
   <li>Hard-drop positioning</li>
   <li>Ghost-piece calculation</li>
   <li>Hold-piece restrictions</li>
-  <li>Single-row clearing</li>
-  <li>Multiple-row clearing</li>
+  <li>Single-line clearing</li>
+  <li>Multiple-line clearing</li>
   <li>Game-over detection</li>
   <li>Increasing fall speed</li>
 </ul>
 
 <hr>
 
+<h2>Software Engineering Concepts</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Concept</th>
+      <th>Demonstrated Through</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Object-Oriented Programming</td>
+      <td>Game entities represented as dedicated classes.</td>
+    </tr>
+    <tr>
+      <td>Inheritance</td>
+      <td>Concrete Tetromino classes derived from <code>Block</code>.</td>
+    </tr>
+    <tr>
+      <td>Polymorphism</td>
+      <td>Common block behavior with specialized Tetromino implementations.</td>
+    </tr>
+    <tr>
+      <td>Encapsulation</td>
+      <td>Game state and mechanics managed inside dedicated components.</td>
+    </tr>
+    <tr>
+      <td>Data Structures</td>
+      <td>Two-dimensional grid and piece queue.</td>
+    </tr>
+    <tr>
+      <td>Algorithms</td>
+      <td>Collision detection, row clearing, and drop-distance calculation.</td>
+    </tr>
+    <tr>
+      <td>Asynchronous Programming</td>
+      <td>Timed game loop implemented using asynchronous delays.</td>
+    </tr>
+    <tr>
+      <td>UI Development</td>
+      <td>WPF and XAML-based desktop interface.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
 <h2>Learning Outcomes</h2>
 
 <p>
-  This project provided practical experience in:
+  Through this project, practical experience was gained in:
 </p>
 
 <ul>
-  <li>Object-oriented software design</li>
   <li>C# application development</li>
-  <li>WPF desktop application development</li>
-  <li>XAML-based UI development</li>
+  <li>.NET desktop development</li>
+  <li>WPF and XAML</li>
+  <li>Object-oriented software design</li>
   <li>Game-state management</li>
-  <li>Algorithm implementation</li>
+  <li>Grid-based algorithms</li>
   <li>Collision detection</li>
-  <li>Two-dimensional grid manipulation</li>
+  <li>Data structure implementation</li>
   <li>Asynchronous programming</li>
   <li>Software architecture</li>
-  <li>Version control with Git</li>
+  <li>Version control with Git and GitHub</li>
 </ul>
 
 <hr>
@@ -816,10 +875,16 @@ dotnet run
 <h2>Academic Context</h2>
 
 <p>
-  The project was developed as a practical software engineering and
-  object-oriented programming project. It demonstrates how fundamental
-  programming concepts can be combined to build an interactive desktop
-  application with non-trivial state management and algorithmic logic.
+  This project was developed as a practical application of programming,
+  object-oriented design, algorithms, data structures, and software engineering
+  concepts.
+</p>
+
+<p>
+  Rather than implementing the game as a single monolithic program, the project
+  separates the main responsibilities into reusable components such as
+  <code>GameState</code>, <code>GameGrid</code>, <code>BlockQueue</code>,
+  <code>Block</code>, and the individual Tetromino implementations.
 </p>
 
 <hr>
@@ -830,14 +895,13 @@ dotnet run
 
 <p>
   <a href="https://github.com/MOHAMMAD-KIMIA/Tetris-Project">
-    <img src="https://img.shields.io/badge/View%20Source%20Code-GitHub-181717?style=for-the-badge&logo=github" alt="View Source Code">
+    <img src="https://img.shields.io/badge/Source%20Code-GitHub-181717?style=for-the-badge&logo=github" alt="GitHub">
   </a>
 </p>
 
 <p>
-  <strong>GitHub:</strong>
   <a href="https://github.com/MOHAMMAD-KIMIA/Tetris-Project">
-    MOHAMMAD-KIMIA/Tetris-Project
+    github.com/MOHAMMAD-KIMIA/Tetris-Project
   </a>
 </p>
 
@@ -854,13 +918,12 @@ dotnet run
 </p>
 
 <p>
-  Computer Engineering Student<br>
   Software Development &amp; Artificial Intelligence
 </p>
 
 <p>
   <a href="https://github.com/MOHAMMAD-KIMIA">
-    GitHub
+    GitHub Profile
   </a>
 </p>
 
