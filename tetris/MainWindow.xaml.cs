@@ -204,12 +204,43 @@ namespace tetris
             await GameLoop();
         }
 
-        private async void Save_Click(object sender, RoutedEventArgs e)
+        private void Save_Click(object sender, RoutedEventArgs e)
         {
-            service = new Service();
-            gameState = new GameState();
-            GameOverMenu.Visibility = Visibility.Hidden;
-            await GameLoop();
+            string connectionString =
+                @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\tetris\tetris\Tetris.mdf;Integrated Security=True";
+        
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+        
+                    string query = "INSERT INTO UserTab VALUES (@score)";
+        
+                    using (SqlCommand comm = new SqlCommand(query, conn))
+                    {
+                        comm.Parameters.AddWithValue("@score", gameState.Score);
+        
+                        comm.ExecuteNonQuery();
+                    }
+                }
+        
+                MessageBox.Show(
+                    $"Score saved successfully: {gameState.Score}",
+                    "Success",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Information
+                );
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Failed to save score:\n{ex.Message}",
+                    "Database Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error
+                );
+            }
         }
     }
 }
