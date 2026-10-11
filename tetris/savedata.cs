@@ -14,25 +14,38 @@ namespace tetris
     {
         private void save_Click(object sender, EventArgs e)
         {
-            SqlConnection conn;
-            SqlCommand comm; 
-            SqlDataReader dreader;
-            conn = new SqlConnection("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename= @"F:\tetris\tetris\Tetris.mdf";Integrated Security=True");
-            conn.Open();
-            comm = new SqlCommand("insert into UserTab values (@score", conn);
-            comm.Parameters.AddWithValue("@score", $"Score: { gameState.Score}");
-            try
+            string connectionString =
+                @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\tetris\tetris\Tetris.mdf;Integrated Security=True";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                comm.ExecuteNonQuery();
-                MessageBox.Show("Saved...");
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Not Saved");
-            }
-            finally
-            {
-                conn.Close();
+                try
+                {
+                    conn.Open();
+
+                    string query = "INSERT INTO UserTab VALUES (@score)";
+
+                    using (SqlCommand comm = new SqlCommand(query, conn))
+                    {
+                        comm.Parameters.AddWithValue(
+                            "@score",
+                            $"Score: {gameState.Score}"
+                        );
+
+                        comm.ExecuteNonQuery();
+                    }
+
+                    MessageBox.Show("Saved...");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(
+                        $"Not Saved: {ex.Message}",
+                        "Database Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error
+                    );
+                }
             }
         }
     }
