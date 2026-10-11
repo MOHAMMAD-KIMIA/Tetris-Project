@@ -1,4 +1,3 @@
-```yaml
 name: Tetris CI
 
 on:
@@ -26,4 +25,3 @@ jobs:
 
       - name: Build project
         run: dotnet build --configuration Release --no-restore
-```
