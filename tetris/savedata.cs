@@ -5,21 +5,21 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Windows.Forms;
+using System.Windows;
 using System.Data.SqlClient;
 
 namespace tetris
 {
     public partial class savedata
     {
-        private void save_Click(object sender, EventArgs e)
+        private void save_Click(object sender, RoutedEventArgs e)
         {
             string connectionString =
                 @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\tetris\tetris\Tetris.mdf;Integrated Security=True";
 
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            try
             {
-                try
+                using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
 
@@ -34,18 +34,23 @@ namespace tetris
 
                         comm.ExecuteNonQuery();
                     }
+                }
 
-                    MessageBox.Show("Saved...");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(
-                        $"Not Saved: {ex.Message}",
-                        "Database Error",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error
-                    );
-                }
+                MessageBox.Show(
+                    "Score saved successfully!",
+                    "Success",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Information
+                );
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Failed to save score:\n{ex.Message}",
+                    "Database Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error
+                );
             }
         }
     }
