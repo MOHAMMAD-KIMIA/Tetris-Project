@@ -17,7 +17,7 @@ namespace tetris
             SqlConnection conn;
             SqlCommand comm; 
             SqlDataReader dreader;
-            conn = new SqlConnection("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\tetris\tetris\Tetris.mdf;Integrated Security=True");
+            conn = new SqlConnection("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename= @"F:\tetris\tetris\Tetris.mdf";Integrated Security=True");
             conn.Open();
             comm = new SqlCommand("insert into UserTab values (@score", conn);
             comm.Parameters.AddWithValue("@score", $"Score: { gameState.Score}");
